@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attendance Calculator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav>
+    <h1 class="heading">Bunckker</h1>
+</nav>
+<div class="container">
+    <button id='left'>
+        <img class='btnImg' src="img/left.png" alt="left" />
+    </button>
+
+    <div id="elem1" class="elements active">
+        <h1 class='contentText'>1st Sem</h1>
+        <div class="keeper">
+            <h1 class='contentText'>Total classes - 540</h1>
+            <h1 class='contentText'>Total classes you can bunk - 135</h1>
+        </div>
+    </div>
+    <div id="elem2" class="elements">
+        <h1 class='contentText'>2nd Sem</h1>
+        <div class="keeper">
+            <h1 class='contentText'>Total classes - 525</h1>
+            <h1 class='contentText'>Total classes you can bunk - 130</h1>
+        </div>
+    </div>
+    <div id="elem3" class="elements">
+        <h1 class='contentText'>3rd Sem</h1>
+        <div class="keeper">
+            <h1 class='contentText'>Total classes - 540</h1>
+            <h1 class='contentText'>Total classes you can bunk - 135</h1>
+        </div>
+    </div>
+    <div id="elem4" class="elements">
+        <h1 class='contentText'>4th Sem</h1>
+        <div class="keeper">
+            <h1 class='contentText'>Total classes - 525</h1>
+            <h1 class='contentText'>Total classes you can bunk - 130</h1>
+        </div>
+    </div>
+    <div id="elem5" class="elements">
+        <h1 class='contentText'>5th Sem</h1>
+        <div class="keeper">
+            <h1 class='contentText'>Total classes - 540</h1>
+            <h1 class='contentText'>Total classes you can bunk - 135</h1>
+        </div>
+    </div>
+    <div id="elem6" class="elements">
+        <h1 class='contentText'>6th Sem</h1>
+        <div class="keeper">
+            <h1 class='contentText'>Total classes - 525</h1>
+            <h1 class='contentText'>Total classes you can bunk - 130</h1>
+        </div>
+    </div>
+
+    <button id="right">
+        <img class='btnImg' src="img/right.png" alt="right" />
+    </button>
+</div>
+<div class="section">
+    <h1 class='text'>Enter how many classes you have missed</h1>
+    <input type="number" id='input' min="0" />
+    <button id="submit">Submit</button>
+    <div id="attendanceInfo" class="attendanceInfo"></div>
+    <div id="error" class="error" style="color: red;"></div>
+</div>
+
+<script>
+    const semesterData = [
+        { totalClasses: 540, classesBunk: 135 },
+        { totalClasses: 525, classesBunk: 130 },
+        { totalClasses: 540, classesBunk: 135 },
+        { totalClasses: 525, classesBunk: 130 },
+        { totalClasses: 540, classesBunk: 135 },
+        { totalClasses: 525, classesBunk: 130 },
+    ];
+
+    let currentSlider = 1;
+
+    const updateSlider = () => {
+        document.querySelectorAll('.elements').forEach((elem, index) => {
+            elem.classList.remove('active');
+            if (index + 1 === currentSlider) {
+                elem.classList.add('active');
+            }
+        });
+    };
+
+    document.getElementById('left').onclick = () => {
+        currentSlider = currentSlider === 1 ? semesterData.length : currentSlider - 1;
+        updateSlider();
+        clearError();
+    };
+
+    document.getElementById('right').onclick = () => {
+        currentSlider = currentSlider === semesterData.length ? 1 : currentSlider + 1;
+        updateSlider();
+        clearError();
+    };
+
+    document.getElementById('submit').onclick = () => {
+        const absentClasses = parseInt(document.getElementById('input').value);
+        clearError();
+
+        if (isNaN(absentClasses) || absentClasses < 0) {
+            document.getElementById('error').innerText = "Please enter a valid number of classes missed.";
+            return;
+        }
+
+        const { totalClasses, classesBunk } = semesterData[currentSlider - 1];
+        const classesLeft = totalClasses - absentClasses;
+        const attendance = (classesLeft / totalClasses) * 100;
+        const bunk = classesBunk - absentClasses;
+
+        document.getElementById('attendanceInfo').innerText = `
+            Your attendance: ${attendance.toFixed(2)}%
+            No of classes you can bunk: ${bunk}
+        `;
+    };
+
+    const clearError = () => {
+        document.getElementById('error').innerText = '';
+    };
+</script>
+
+</body>
+</html>

@@ -1,0 +1,265 @@
+@import url('https://fonts.googleapis.com/css2?family=Protest+Guerrilla&display=swap');
+
+body {
+  padding: 0;
+  margin: 0;
+  background-color: rgb(234, 215, 104);
+  font-size: 16px;
+}
+
+nav {
+  display: flex;
+  height: 10rem;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  background-color: maroon;
+}
+
+.heading {
+  margin: 0;
+  color: rgb(234, 215, 104);
+  font-family: "Protest Guerrilla", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 2.5rem;
+}
+
+.container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding: 2rem 0;
+}
+
+.elements {
+  width: 60%;
+  background-color: white;
+  display: none; /* Hide all elements by default */
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  box-sizing: border-box;
+  border-radius: 10px;
+}
+
+.elements.active {
+  display: flex; /* Show active element */
+}
+
+.keeper {
+  margin: 1rem;
+  text-align: center;
+}
+
+#left {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+#right {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.btnImg {
+  height: 4rem;
+  width: 3rem;
+}
+
+.contentText {
+  font-family: "Protest Guerrilla", sans-serif;
+  font-weight: 400;
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+.section {
+  width: 80%;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 2rem 10vw;
+  padding: 2.5rem;
+  font-family: "Protest Guerrilla", sans-serif;
+  font-weight: 400;
+  box-sizing: border-box;
+  border-radius: 1vw;
+}
+
+input {
+  margin: 1.5rem;
+  width: 90%;
+  max-width: 20em;
+  background-color: #eae4b0;
+  font-family: "Protest Guerrilla", sans-serif;
+  font-weight: 400;
+  height: 2rem;
+}
+
+.text {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+#submit {
+  background-color: #eae4b0;
+  padding: 0.6rem 1.2rem;
+  font-family: "Protest Guerrilla", sans-serif;
+  font-weight: 400;
+  cursor: pointer;
+}
+
+#error {
+  font-size: 1rem;
+  text-align: center;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 1024px) {
+  .container {
+    flex-direction: column;
+    height: auto;
+    padding: 1.5rem;
+  }
+
+  .elements {
+    width: 80%;
+    padding: 1.5rem;
+    margin: 4vh;
+  }
+
+  .btnImg {
+    height: 3.5rem;
+    width: 2.5rem;
+  }
+
+  .contentText {
+    font-size: 1.25rem;
+  }
+
+  .section {
+    width: 80%;
+    padding: 2rem;
+  }
+
+  input {
+    width: 85%;
+  }
+
+  #submit {
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+  }
+
+  #left, #right {
+    top: 52%;
+  }
+  #left{
+    left: 1vw;
+  }
+  #right{
+    right: 1vw;
+  }
+}
+
+@media (max-width: 768px) {
+  nav {
+    height: 8rem;
+  }
+
+  .heading {
+    font-size: 2rem;
+  }
+
+  .container {
+    padding: 1rem;
+  }
+
+  .elements {
+    width: 80%;
+    padding: 1rem;
+  }
+
+  .btnImg {
+    height: 3rem;
+    width: 2rem;
+  }
+
+  .contentText {
+    font-size: 1.1rem;
+  }
+
+  .section {
+    width: 80%;
+    padding: 1.75rem;
+  }
+
+  input {
+    width: 100%;
+    font-size: 1rem;
+  }
+
+  #submit {
+    font-size: 0.9rem;
+    padding: 0.4rem 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  nav {
+    height: 7rem;
+  }
+
+  .heading {
+    font-size: 1.75rem;
+  }
+
+  .container {
+    flex-direction: column;
+    padding: 1rem 0;
+  }
+
+  .elements {
+    width: 78%;
+    padding: 0.75rem;
+  }
+
+  .btnImg {
+    height: 4vh;
+    width: 5vw;
+}
+
+  .contentText {
+    font-size: 1rem;
+  }
+
+  .section {
+    margin: 0 10vw;
+    height: 36vh;
+    width: 80%;
+    padding: 0.75rem;
+  }
+
+  input {
+    width: 80%;
+    font-size: 1rem;
+  }
+
+  #submit {
+    font-size: 0.9rem;
+    padding: 0.4rem 0.8rem;
+  }
+  .text{
+  margin: 1px;
+  font-size: 1.2rem;
+}
+}
